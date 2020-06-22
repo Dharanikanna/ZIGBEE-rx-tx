@@ -1,0 +1,121 @@
+int button1 = A0;
+int button2 = A1;
+int voice1 = 2;
+int voice2 = 3;
+int voice3 = 4;
+int voice4 = 5;
+int voice5 = 6;
+int voice6 = 7;
+char value;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
+  pinMode(voice1, OUTPUT);
+  pinMode(voice2, OUTPUT);
+  pinMode(voice3, OUTPUT);
+  pinMode(voice4, OUTPUT);
+  pinMode(voice5, OUTPUT);
+  pinMode(voice6, OUTPUT);
+}
+
+void loop() {
+
+  while (Serial.available() > 0) {
+    value = Serial.read();
+    button();
+    signalC();
+    signalD();
+    signalE();
+    signalF();
+    signalG();
+    signalH();
+
+  }
+}
+
+void button() {
+  int A = digitalRead(button1);
+  int B = digitalRead(button2);
+  if (A == 1) {
+
+    Serial.println("A");
+  }
+  if (B == 1) {
+    Serial.println("B");
+  }
+}
+void signalC() {
+
+  if (value == 'C') {
+    digitalWrite(voice1, HIGH);
+    digitalWrite(voice2, LOW);
+    digitalWrite(voice3, LOW);
+    digitalWrite(voice4, LOW);
+    digitalWrite(voice5, LOW);
+    digitalWrite(voice6, LOW);
+  }
+}
+
+void signalD() {
+
+  if (value == 'D') {
+    digitalWrite(voice2, HIGH);
+    digitalWrite(voice1, LOW);
+    digitalWrite(voice3, LOW);
+    digitalWrite(voice4, LOW);
+    digitalWrite(voice5, LOW);
+    digitalWrite(voice6, LOW);
+
+  }
+
+
+}
+
+void signalE() {
+
+  if (value == 'E') {
+    digitalWrite(voice3, HIGH);
+    digitalWrite(voice2, LOW);
+    digitalWrite(voice1, LOW);
+    digitalWrite(voice4, LOW);
+    digitalWrite(voice5, LOW);
+    digitalWrite(voice6, LOW);
+  }
+
+
+}
+void signalF() {
+  if (value == 'F') {
+    digitalWrite(voice4, HIGH);
+    digitalWrite(voice2, LOW);
+    digitalWrite(voice3, LOW);
+    digitalWrite(voice1, LOW);
+    digitalWrite(voice5, LOW);
+    digitalWrite(voice6, LOW);
+  }
+}
+void signalG() {
+  if (value == 'G') {
+    digitalWrite(voice5, HIGH);
+    digitalWrite(voice2, LOW);
+    digitalWrite(voice3, LOW);
+    digitalWrite(voice4, LOW);
+    digitalWrite(voice1, LOW);
+    digitalWrite(voice6, LOW);
+  }
+
+
+}
+void signalH() {
+
+  if (value == 'H') {
+    digitalWrite(voice6, HIGH);
+    digitalWrite(voice2, LOW);
+    digitalWrite(voice3, LOW);
+    digitalWrite(voice4, LOW);
+    digitalWrite(voice5, LOW);
+    digitalWrite(voice1, LOW);
+  }
+}
