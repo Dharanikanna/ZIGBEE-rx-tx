@@ -1,0 +1,53 @@
+int sensor1 = A0;
+int sensor2 = A1;
+int sensor3 = A2;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(sensor1, INPUT);
+  pinMode(sensor2, INPUT);
+  pinMode(sensor3, INPUT);
+}
+
+void loop() {
+
+  while (Serial.available() > 0) {
+    char value;
+    value = Serial.read();
+
+    if (value == "A") {
+
+      int s1 = digitalRead(sensor1);
+      int s2 = digitalRead(sensor2);
+      int s3 = digitalRead(sensor3);
+
+      if (s1 == 1) {
+        Serial.println('C');
+      }
+      else if (s2 == 1) {
+        Serial.println('D');
+      }
+      else if (s3 == 1) {
+        Serial.println('E');
+      }
+      Serial.flush();
+    }
+    if (value == "B") {
+
+      int s1 = digitalRead(sensor1);
+      int s2 = digitalRead(sensor2);
+      int s3 = digitalRead(sensor3);
+
+      if (s1 == 1) {
+        Serial.println('F');
+      }
+      else if (s2 == 1) {
+        Serial.println('G');
+      }
+      else if (s3 == 1) {
+        Serial.println('H');
+      }
+      Serial.flush();
+    }
+  }
+}
